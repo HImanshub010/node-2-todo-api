@@ -24,7 +24,6 @@ MongoClient.connect('mongodb://localhost:27017',(err,client)=>{
     //also returns the lastErrorObject returns n i.e not of items deleted
     db.collection('Todos').findOneAndDelete({completed:false}).then((result)=>{
     	console.log(result);
-    })
-
+ 
 	//client.close();
 });

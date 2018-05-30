@@ -1,4 +1,15 @@
-const MongoClient=require('mongodb').MongoClient;
+// const MongoClient=require('mongodb').MongoClient;
+const{MongoClient,ObjectID}=require('mongodb');//we are using object destructuring here ogjectID is used =to make new object id
+// var obj=new ObjectID();
+// console.log(obj);//Prints a different object id every time
+
+
+// var user={
+// 	name:'Himanshu'//object resturcturing is a fantastic tool used to create new variable out of obeject properties
+// 	age:25//and it act as a new variable.
+// }
+// var{name}=user//It create a variable name whose value is carved out of object user
+//console.log(name);
 MongoClient.connect('mongodb://localhost:27017',(err,client)=>{
 	if(err){
 	    return console.log('Unable to connect to mongodb Server ');
