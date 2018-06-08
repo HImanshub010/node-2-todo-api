@@ -46,6 +46,23 @@ app.get('/todos/:id',(req,res)=>{
 		res.status(400).send();
 	});
 });
+
+
+app.delete('/todos/:id',(req,res)=>{
+	var id=req.params.id;
+	if(!ObjectID.isValid(id)){
+     	return res.status(404).send("not valid id");
+     }
+ 
+    Todo.findByIdAndRemove(id).then((todo)=>{
+	  if(!todo){//occurs when the objectId is valid but no user is found with this id
+		return res.status(400).send("valid but no record");
+	}
+      res.send({todo});//{todo }is similar to {todo:todo}
+	}).catch((e)=>{
+		res.status(400).send("some error ocurred");
+	});
+})
 app.listen(port,()=>{
   console.log(`Started on port on ${port}`);
 });
